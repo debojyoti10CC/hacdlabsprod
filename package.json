@@ -1,0 +1,13 @@
+{
+  "name": "forge-frg-demo",
+  "version": "1.0.0",
+  "description": "FORGE (FRG) — PoW-backed AI agent compute token demo on HACD Stack",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}

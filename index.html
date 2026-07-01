@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FORGE (FRG) — PoW-Backed AI Agent Compute Token | HACD Stack</title>
+  <meta name="description" content="FORGE is a PoW-backed AI agent compute token formed through HACD Stack. Every FRG token was formed on-chain — 1 FRG = 1 prepaid AI agent task run. Tokens burn on use." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <div class="logo-group">
+        <div class="forge-logo" aria-label="FORGE logo">
+          <span class="logo-icon">⬡</span>
+          <span class="logo-text">FORGE</span>
+          <span class="logo-ticker">FRG</span>
+        </div>
+      </div>
+
+      <div class="balance-display" id="balance-display" aria-live="polite" aria-label="FRG balance">
+        <span class="balance-label">FRG BALANCE</span>
+        <span class="balance-number" id="frg-balance">10,000</span>
+        <span class="balance-unit">FRG</span>
+      </div>
+
+      <div class="header-badges">
+        <span class="badge badge-network">Hacash Mainnet</span>
+        <span class="badge badge-mocked" id="mock-badge">Formation: mocked for demo</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="main-grid" role="main">
+
+    <!-- LEFT: Formation Record -->
+    <section class="panel panel-formation" aria-labelledby="formation-title">
+      <div class="panel-header">
+        <h2 id="formation-title" class="panel-title">Formation Record</h2>
+        <span class="panel-badge">HACD Stack Origin</span>
+      </div>
+      <div class="panel-body">
+        <div class="formation-field">
+          <span class="field-label">HACD Name</span>
+          <span class="field-value hacd-name" id="hacd-name" aria-label="HACD Name">—</span>
+        </div>
+        <div class="formation-field">
+          <span class="field-label">Formed At</span>
+          <span class="field-value mono" id="formed-at">—</span>
+        </div>
+        <div class="formation-field">
+          <span class="field-label">Stack Cost</span>
+          <span class="field-value mono" id="stack-cost">50 HAC</span>
+        </div>
+        <div class="formation-field">
+          <span class="field-label">FRG This Lot</span>
+          <span class="field-value mono accent" id="frg-lot">10,000 FRG</span>
+        </div>
+        <div class="formation-field">
+          <span class="field-label">Units Formed</span>
+          <span class="field-value mono" id="units-formed">1 HACD lot</span>
+        </div>
+        <div class="formation-field">
+          <span class="field-label">Status</span>
+          <span class="field-value">
+            <span class="status-pill status-mocked" id="formation-status">formation: mocked for demo</span>
+          </span>
+        </div>
+        <div class="formation-field">
+          <span class="field-label">Wallet</span>
+          <span class="field-value mono small" id="wallet-address">—</span>
+        </div>
+        <div class="formation-divider"></div>
+        <p class="formation-note">
+          This FRG supply was <strong>formed through HACD Stack</strong> — not freely minted. Each lot required a PoW-mined HACD unit and a 50 HAC stack cost. The formation time is permanently sealed on-chain.
+        </p>
+      </div>
+    </section>
+
+    <!-- CENTER: Agent Task -->
+    <section class="panel panel-agent" aria-labelledby="agent-title">
+      <div class="panel-header">
+        <h2 id="agent-title" class="panel-title">Run Agent Task</h2>
+        <span class="panel-badge">AI · Summarize</span>
+      </div>
+      <div class="panel-body">
+        <div class="task-stats">
+          <div class="stat-item">
+            <span class="stat-label">Total Burned</span>
+            <span class="stat-value mono" id="total-burned">0 FRG</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Tasks Run</span>
+            <span class="stat-value mono" id="tasks-run">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">AI Source</span>
+            <span class="stat-value mono" id="ai-source">mock</span>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="task-input" class="input-label">
+            Content to Summarize
+            <span class="input-hint">Paste any text — article, docs, news blurb</span>
+          </label>
+          <textarea
+            id="task-input"
+            class="task-textarea"
+            rows="6"
+            placeholder="Paste or type the content you want to summarize…
+
+Default: OpenAI's GPT-4o has shown strong performance on reasoning benchmarks, achieving state-of-the-art results across math, coding, and language tasks. The model was trained with a new reinforcement learning approach that improves response quality. Researchers note that compute remains the primary bottleneck for further improvements."
+            aria-describedby="input-description"
+          ></textarea>
+          <span id="input-description" class="sr-only">Text input for the AI summarization task. One FRG token will be burned when you run this task.</span>
+        </div>
+
+        <button
+          id="run-task-btn"
+          class="run-btn"
+          aria-describedby="burn-description"
+        >
+          <span class="btn-icon">▶</span>
+          <span class="btn-text">Run Agent Task</span>
+          <span class="btn-cost">burn 1 FRG</span>
+        </button>
+        <span id="burn-description" class="sr-only">Clicking this button will run an AI summarization task and burn 1 FRG token from your balance.</span>
+
+        <div class="task-output" id="task-output" aria-live="polite" hidden>
+          <div class="output-header">
+            <span class="output-label">Latest Output</span>
+            <span class="output-ai-tag" id="output-ai-tag">AI: mock</span>
+          </div>
+          <p class="output-text" id="output-text"></p>
+          <div class="output-meta">
+            <span class="output-tx" id="output-tx"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RIGHT: Burn History -->
+    <section class="panel panel-history" aria-labelledby="history-title">
+      <div class="panel-header">
+        <h2 id="history-title" class="panel-title">Burn History</h2>
+        <span class="panel-badge history-count" id="history-count">0 burns</span>
+      </div>
+      <div class="panel-body">
+        <div class="history-feed" id="history-feed" role="log" aria-label="Burn history feed" aria-live="polite">
+          <div class="history-empty" id="history-empty">
+            <span class="empty-icon">○</span>
+            <span class="empty-text">No burns yet.<br/>Run an agent task to start the loop.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MINT VIA STACK EXPLAINER -->
+  <section class="mint-panel" aria-labelledby="mint-title">
+    <div class="mint-inner">
+      <div class="mint-header">
+        <h2 id="mint-title" class="mint-title">How new FRG enters supply</h2>
+        <span class="mint-badge">No free minting</span>
+      </div>
+
+      <div class="mint-steps">
+        <div class="mint-step">
+          <div class="step-icon-wrap">
+            <span class="step-icon" aria-hidden="true">⬡</span>
+          </div>
+          <div class="step-content">
+            <span class="step-number">Step 1</span>
+            <h3 class="step-title">Acquire a HACD</h3>
+            <p class="step-desc">A PoW-mined HACD unit with a unique 6-letter name from the 16-letter set. Each HACD is mined, not issued arbitrarily.</p>
+          </div>
+        </div>
+
+        <div class="mint-connector" aria-hidden="true">→</div>
+
+        <div class="mint-step">
+          <div class="step-icon-wrap">
+            <span class="step-icon" aria-hidden="true">◎</span>
+          </div>
+          <div class="step-content">
+            <span class="step-number">Step 2</span>
+            <h3 class="step-title">Pay 50 HAC Stack Cost</h3>
+            <p class="step-desc">Submit 50 HAC as the formation cost on the Hacash Launchpad. This is the on-chain stack cost — not a purchase price.</p>
+          </div>
+        </div>
+
+        <div class="mint-connector" aria-hidden="true">→</div>
+
+        <div class="mint-step">
+          <div class="step-icon-wrap">
+            <span class="step-icon" aria-hidden="true">◈</span>
+          </div>
+          <div class="step-content">
+            <span class="step-number">Step 3</span>
+            <h3 class="step-title">10,000 FRG Formed</h3>
+            <p class="step-desc">10,000 FRG are formed on-chain and credited to your wallet. The formation record is permanent and cannot be backdated.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mint-stats">
+        <div class="mint-stat">
+          <span class="mstat-value mono">200</span>
+          <span class="mstat-label">HACD lots total</span>
+        </div>
+        <div class="mint-stat-divider"></div>
+        <div class="mint-stat">
+          <span class="mstat-value mono">2,000,000</span>
+          <span class="mstat-label">FRG maximum supply</span>
+        </div>
+        <div class="mint-stat-divider"></div>
+        <div class="mint-stat">
+          <span class="mstat-value mono">50 HAC</span>
+          <span class="mstat-label">stack cost per lot</span>
+        </div>
+      </div>
+
+      <div class="mint-footer">
+        <a
+          href="https://hacd.it/launchpad"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mint-link"
+          id="launchpad-link"
+        >
+          Stack on hacd.it/launchpad ↗
+        </a>
+        <span class="mint-disclaimer-badge">Formation: mocked for demo — real stacking requires a HACD unit</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <span class="footer-text">FORGE (FRG) · HACD Stack Asset · HACD Labs Incubator Cohort 2</span>
+      <span class="footer-note">Demo build. No real funds. No wallet connection. Formation: mocked for demo.</span>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+{
+  "$schema": "./schema/launch_spec.schema.json",
+  "spec_version": "1.0.0",
+  "project": {
+    "name": "FORGE",
+    "ticker": "FRG",
+    "category": "AI agent",
+    "description": "A PoW-backed AI agent compute token formed through HACD Stack. Every FRG token was formed on-chain through a PoW-mined HACD unit and a 50 HAC stack cost. 1 FRG = 1 prepaid AI agent task run. Tokens burn on use. New supply only through HACD Stack minting.",
+    "team_status": "HACD Labs Incubator Cohort 2 — draft",
+    "official_links": {
+      "launchpad": "https://hacd.it/launchpad",
+      "demo": "https://hacd.it/incubator"
+    },
+    "target_users": "AI developers, protocol users, HACD Stack participants seeking verifiable compute credits",
+    "why_hacd": "Compute credits that can be freely minted are structurally indistinguishable from promises. FORGE anchors supply origin to real energy expenditure — every FRG batch has an immutable on-chain formation record that cannot be backdated or secretly pre-minted."
+  },
+  "issuance": {
+    "asset_type": "FT",
+    "total_supply": 2000000,
+    "hacd_lots": 200,
+    "units_per_hacd_lot": 10000,
+    "stack_cost_per_hacd_hac": 50,
+    "minimum_hacd_per_participant": 1,
+    "designated_address_required": false,
+    "all_lots_equal": true,
+    "removal_burns_asset": true,
+    "formation_cost_total_hac": 10000,
+    "launch_phases": [
+      {
+        "phase": 1,
+        "label": "Public Stack",
+        "description": "All 200 HACD lots open to public participation via Hacash Launchpad. Each lot: 1 HACD + 50 HAC stack cost → 10,000 FRG formed on-chain.",
+        "status": "planned"
+      }
+    ]
+  },
+  "utility": {
+    "holder_rights": "Each FRG token represents one prepaid AI agent task run. The token is consumed (burned) when the task executes.",
+    "product_utility": "1 FRG = 1 AI agent task. Burn-on-use model. No passive income, no staking rewards, no guaranteed redemption value.",
+    "ecosystem_utility": "FRG tokens are the native spend unit for FORGE AI agent tasks built on the HACD Stack. Demand is driven by actual task execution.",
+    "utility_at_launch": false,
+    "utility_notes": "Task execution infrastructure is in active development. This token represents a formation record and future task access claim — not a currently active compute service.",
+    "roadmap_dependencies": [
+      "AI agent task infrastructure deployment",
+      "Token burn mechanism on-chain integration",
+      "Developer API release"
+    ],
+    "do_not_promise": [
+      "Any guaranteed price relationship",
+      "Financial returns of any kind",
+      "Guaranteed exchange listings",
+      "Fixed task availability date",
+      "Staking rewards or passive income"
+    ]
+  },
+  "launch": {
+    "intended_launchpad_date": "Needs issuer confirmation",
+    "claim_method": "HACD Stack via Hacash Launchpad",
+    "public_communication_angle": "PoW-backed compute credits formed through HACD Stack — every FRG has a verifiable on-chain formation origin",
+    "status": "draft"
+  },
+  "compliance": {
+    "not_financial_advice": true,
+    "human_review_required": true,
+    "issuer_confirmed": false,
+    "hacd_labs_reviewed": false,
+    "risk_disclosure_included": true
+  },
+  "demo": {
+    "wallet_address": "1HacashFRGDemoWallet9B8FE8Stack2Cohort2xZ",
+    "demo_balance": 10000,
+    "is_mocked": true,
+    "formation_status": "mocked for demo — no real on-chain transactions"
+  }
+}
