@@ -299,17 +299,7 @@ Execution strategy:
 
 > The formation moment: FRG balance visible → Formation Record visible → paste text → click → balance decrements → burn event in history feed. Under 60 seconds end to end.
 
-## Demo Video
 
-*Sprint Day 6: Record a 60-second screen demo of the formation moment and pair with the validated 8-document package.*
-
-The demo should show:
-1. App loads — Formation Record visible immediately.
-2. HACD name displayed in `#9B8FE8` accent color.
-3. Text pasted into Agent Task input.
-4. "Run Agent Task (burn 1 FRG)" clicked.
-5. Balance decrements from 10,000 → 9,999 with glow animation.
-6. Burn event appears at top of history feed.
 
 ## How to Run Locally
 
@@ -341,64 +331,7 @@ The demo should show:
 
    The app runs immediately with no environment variables. AI falls back to mock summarization.
 
-### Optional: Real AI Summarization
 
-Create a `.env` file in the project root:
-
-```env
-# Groq (priority 1) — free tier available at console.groq.com
-VITE_GROQ_API_KEY=your_groq_key_here
-
-# OpenAI (priority 2) — fallback if Groq key is not set
-VITE_OPENAI_API_KEY=your_openai_key_here
-```
-
-API priority order: Groq `llama3-8b-8192` → OpenAI `gpt-3.5-turbo` → deterministic mock.
-
-### Validate the Issuance Package
-
-```bash
-# Python 3 required
-py scripts/validate_launch_spec.py project_frg/launch_spec.json --strict
-
-# Expected: 0 errors, 2 warnings
-```
-
-The 2 expected warnings (`issuer_confirmed` and `hacd_labs_reviewed` = false) are intentional draft flags. Flip them only after real issuer + HACD Labs review.
-
-## Sprint Plan
-
-Mapped to the HACD Labs Incubator Cohort 2 campaign window:
-
-| Day | Work | Status |
-|---|---|---|
-| Day 1 | App skeleton, layout, color system, Formation Record panel | ✅ |
-| Day 2 | "Run Agent Task" button, balance decrement, burn event creation | ✅ |
-| Day 3 | Real AI integration (Groq), burn history feed, glow animation | ✅ |
-| Day 4 | "Mint via Stack" explainer, copy review against utility honesty rules | ✅ |
-| Day 5 | Responsive layout, accessibility, `prefers-reduced-motion` | ✅ |
-| Day 6 | Record 60-second formation moment screen demo | ⬜ |
-| Day 7 | Submit complete package to HACD Labs via hacd.it/incubator | ⬜ |
-
-## Acceptance Criteria
-
-| Criterion | Status |
-|---|---|
-| Formation moment end to end in under 60 seconds | ✅ |
-| FRG balance decrements by exactly 1 per task | ✅ |
-| BurnEvent created with timestamp, AI output, and mocked tx hash | ✅ |
-| Burn History shows last 10 burns, newest first | ✅ |
-| Formation Record panel visible without scrolling on desktop | ✅ |
-| Valid 6-char HACD name from `WTYUIAHXVMEKBSZN` charset | ✅ |
-| "Mint via Stack" panel explains formation flow honestly | ✅ |
-| "formation: mocked for demo" label in header and Formation panel | ✅ |
-| No speculative financial assertions or incorrect HACD framing | ✅ |
-| No console errors | ✅ |
-| App runs with `npm run dev` on first try | ✅ |
-| JetBrains Mono for numbers and hashes, Space Grotesk for headings | ✅ |
-| Burn glow animation fires on balance decrement | ✅ |
-| `prefers-reduced-motion` skips animations | ✅ |
-| Validator: 0 errors, 2 expected warnings | ✅ |
 
 ## Future Scope
 
@@ -415,13 +348,7 @@ Mapped to the HACD Labs Incubator Cohort 2 campaign window:
 
 - Debojyoti De Majumder — product, demo build, issuance package, HACD framing
 
-## Why It Matters
 
-FORGE makes a simple argument: a compute credit whose supply can be freely minted is a promise, not a credit.
-
-HACD Stack gives FRG a supply origin that is anchored to real energy expenditure and permanently recorded on-chain. Every reviewer who opens this app can read the formation record in the first 5 seconds — HACD name, formed-at timestamp, stack cost, FRG lot — without scrolling, without trusting the issuer, without reading a whitepaper.
-
-That is what "formed, not merely deployed" means in practice.
 
 ## Issuance Package
 
