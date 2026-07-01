@@ -124,6 +124,9 @@ Each task execution decrements the FRG balance by exactly 1, creates a BurnEvent
 
 The "Mint via Stack" panel at the bottom explains the 3-step formation process: acquire HACD → pay 50 HAC → 10,000 FRG formed. Static, educational, no live transaction required.
 
+
+<img width="1896" height="903" alt="image" src="https://github.com/user-attachments/assets/75e8a585-9fab-47ac-a361-8dd915f3a3e1" />
+
 ## Workflow
 
 1. App loads — Formation Record is visible within 2 seconds.
