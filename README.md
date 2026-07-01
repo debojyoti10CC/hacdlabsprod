@@ -1,5 +1,6 @@
 <p align="center">
-  <img src="docs/images/forge-logo.png" width="320" height="320" alt="FORGE (FRG) Logo" />
+  <img width="320" height="320" alt="huge (5)" src="https://github.com/user-attachments/assets/ac5f1f3b-a0f9-4810-82a8-8ed3a25d9423" />
+
 </p>
 
 # FORGE (FRG) — PoW-Backed AI Agent Compute Token on HACD Stack
